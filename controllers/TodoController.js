@@ -4,7 +4,7 @@ const TodoModel = require('../models/todoModel');
 exports.TodoPerUser = (req, res) => {
   TodoModel.findAll({
       where: {
-        iduser: req.body.iduser
+        token: req.body.token
       }
     })
     .then(data => {
@@ -23,7 +23,8 @@ exports.TodoAdd = (req, res) => {
   TodoModel.create({
     iduser: req.body.iduser,
     text: req.body.text,
-    completed: req.body.completed
+    completed: req.body.completed,
+    token: req.body.token,
   })
   .then(() => {
     res.send(JSON.stringify({
@@ -38,7 +39,7 @@ exports.TodoUpdate = (req, res) => {
   }, {
     where: {
       idtodos: req.body.idtodos,
-      iduser: req.body.iduser
+      token: req.body.token
     }
   })
   .then(() => {

@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize('appserver', 'root', 'cerverus', {
   host: 'localhost',
   dialect: 'mysql',
-  logging: false,
+  //logging: false,
   define: {
     timestamps: false,
     freezeTableName: true

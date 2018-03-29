@@ -15,6 +15,9 @@ const TodoSchema = db.define('todos', {
   },
   iduser: {
     type: d.INTEGER
+  },
+  token: {
+    type: d.STRING
   }
 });
 
