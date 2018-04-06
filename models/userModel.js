@@ -21,6 +21,9 @@ const UserSchema = db.define('user', {
   },
   token: {
     type: d.STRING
+  }, 
+  salthash: {
+    type: d.TEXT
   }
 });
 

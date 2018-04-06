@@ -18,6 +18,9 @@ const TodoSchema = db.define('todos', {
   },
   token: {
     type: d.STRING
+  },
+  created: {
+    type: d.DATE
   }
 });
 

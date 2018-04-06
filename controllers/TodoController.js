@@ -1,11 +1,15 @@
 const db = require('../config/db');
 const TodoModel = require('../models/todoModel');
+const moment = require('moment');
 
 exports.TodoPerUser = (req, res) => {
   TodoModel.findAll({
       where: {
         token: req.body.token
-      }
+      },
+      order: [
+        ['created', 'ASC']
+      ]
     })
     .then(data => {
       if (data != null)
@@ -23,12 +27,13 @@ exports.TodoAdd = (req, res) => {
   TodoModel.create({
     iduser: req.body.iduser,
     text: req.body.text,
-    completed: req.body.completed,
+    completed: false,
     token: req.body.token,
+    created: moment()
   })
   .then(() => {
     res.send(JSON.stringify({
-      Message: 'Todo added.'
+      added: true
     }));
   })
 };
@@ -50,3 +55,20 @@ exports.TodoUpdate = (req, res) => {
     res.sendStatus(500);
   })
 };
+
+exports.TodoDelete = (req, res) => {
+  TodoModel.destroy({
+    where: {
+      idtodos: req.body.idtodos,
+      token: req.body.token
+    }
+  })
+  .then(data => {
+    console.log(data);
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.error("Error on TodoDelete: ", error);
+    res.sendStatus(500);
+  });
+}
