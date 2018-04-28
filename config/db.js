@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('appserver', 'root', 'cerverus', {
+const sequelize = new Sequelize('appserver', 'root', 'server2018', {
   host: 'localhost',
   dialect: 'mysql',
   //logging: false,

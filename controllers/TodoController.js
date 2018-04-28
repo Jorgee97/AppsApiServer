@@ -71,4 +71,4 @@ exports.TodoDelete = (req, res) => {
     console.error("Error on TodoDelete: ", error);
     res.sendStatus(500);
   });
-}
+};

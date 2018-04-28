@@ -7,6 +7,7 @@ var cors = require('cors');
 const types = require('./config/types');
 const TodoRoute = require('./routes/TodoRoute');
 const AuthRoute = require('./routes/AuthRoute');
+const NotesRoute = require('./routes/NotesRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -22,5 +23,6 @@ app.use(function (req, res, next) {
 
 app.use(`/${types.HASH}/todo/api/v1`, TodoRoute);
 app.use(`/${types.HASH}/auth/api/v1`, AuthRoute);
+app.use(`/${types.HASH}/notes/api/v1`, NotesRoute);
 
 module.exports = app;

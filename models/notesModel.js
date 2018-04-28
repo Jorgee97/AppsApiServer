@@ -1,27 +1,24 @@
 const db = require('../config/db');
 const d = db.Sequelize;
 
-const TodoSchema = db.define('todos', {
-  idtodos: {
+const NoteSchema = db.define('notes', {
+  idnotes: {
     type: d.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   text: {
-    type: d.STRING
-  },
-  completed: {
-    type: d.BOOLEAN
-  },
-  iduser: {
-    type: d.INTEGER
+    type: d.TEXT
   },
   token: {
     type: d.STRING
   },
   created: {
     type: d.DATE
+  },
+  title: {
+    type: d.TEXT
   }
 });
 
-module.exports = TodoSchema;
+module.exports = NoteSchema;
