@@ -38,7 +38,6 @@ exports.showNotes = (req, res) => {
 };
 
 exports.deleteNote = (req, res) => {
-  console.log(req.body);
   NotesModel.destroy({
     where: {
       idnotes: req.body.idnotes,
@@ -52,4 +51,23 @@ exports.deleteNote = (req, res) => {
     res.sendStatus(500);
     console.error("Error while deleting a Note: ", error);
   });
+};
+
+exports.editNote = (req, res) => {
+  NotesModel.update({
+    title: req.body.title,
+    text: req.body.text
+  }, {
+    where: {
+      idnotes: req.body.idnotes,
+      token: req.body.token
+    }
+  })
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.error("Error on update note", error);
+    res.sendStatus(403);
+  })
 };

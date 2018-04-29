@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('appserver', 'root', 'server2018', {
+const sequelize = new Sequelize('appserver', 'coreman', 'cerverus18**', {
   host: 'localhost',
   dialect: 'mysql',
-  //logging: false,
+  logging: false,
   define: {
     timestamps: false,
     freezeTableName: true
